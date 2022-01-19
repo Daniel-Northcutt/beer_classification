@@ -44,7 +44,7 @@ def prepare_beer(df):
     df['category_id'] = df['style'].str.get('categoryId')
     df['short_name'] = df['style'].str.get('shortName')
 
-    # changing to float
+    # changing to float - don't need if I place df['style'].astype(float)
     df['ibu_min'] = df['ibu_min'].astype(float)
     df['ibu_max'] = df['ibu_max'].astype(float)
     df['abv_min'] = df['abv_min'].astype(float)
@@ -65,47 +65,71 @@ def prepare_beer(df):
     df['srm'] = df['srm'].str.get('id')
     df['srm'] = df['srm'].astype(float)
     
+    df['style'] = df['style'].astype(str)
     
     # This only means it has the keyword in the description
-
-    df['sour_des'] = df['description'].str.contains('sour')
-    df['sour_des'] = df['sour_des'].astype(bool)
+    df['sour'] = df['description'].str.contains('sour')
 
     # has fruit description
     df['fruit_des'] = df['description'].str.contains('fruit')
-    df['fruit_des'] = df['fruit_des'].astype(bool)
+    #df['fruit_des'] = df['fruit_des'].astype(bool)
 
     # has wheat description
     df['wheat_des'] = df['description'].str.contains('wheat')
-    df['wheat_des'] = df['wheat_des'].astype(bool)
+    #df['wheat_des'] = df['wheat_des'].astype(bool)
 
     # has smoke description
     df['smoke_des'] = df['description'].str.contains('smoke')
-    df['smoke_des'] = df['smoke_des'].astype(bool)
+    #df['smoke_des'] = df['smoke_des'].astype(bool)
 
     # has smoke description
     df['chili_des'] = df['description'].str.contains('chili')
-    df['chili_des'] = df['chili_des'].astype(bool)
+    #df['chili_des'] = df['chili_des'].astype(bool)
 
     # has mead description
     df['mead_des'] = df['description'].str.contains('mead')
-    df['mead_des'] = df['mead_des'].astype(bool)
+    #df['mead_des'] = df['mead_des'].astype(bool)
 
     #has lager ferment
     df['lager_des'] = df['description'].str.contains('lager')
-    df['lager_des'] = df['lager_des'].astype(bool)
+    #df['lager_des'] = df['lager_des'].astype(bool)
 
     # is barrel aged
     df['BBL'] = df['description'].str.contains('BBL')
-    df['BBL'] = df['BBL'].astype(bool)
+    #df['BBL'] = df['BBL'].astype(bool)
+    # American hops used
+    df['american_hop'] = df['style'].str.contains('American-variety hop character')
 
-    #has energy added
-    df['has_energy'] = df['description'].str.contains('energy')
-    df['has_energy'] = df['has_energy'].astype(bool)
+    # piney flavor
+    df['piney_flavor'] = df['style'].str.contains('piney')
 
-    #has brett yeast
-    df['has_brett'] = df['description'].str.contains('brett')
-    df['has_brett'] = df['has_brett'].astype(bool)
+    # Belgian characteristics
+    df['belgian'] = df['style'].str.contains('Belgian')
+
+    # Is Imperial
+    df['imperial'] = df['style'].str.contains('imperial')
+
+    # Honey flavor
+    df['honey'] = df['style'].str.contains('honey')
+
+    #Ester flavor (yeasty)
+    df['esters'] = df['style'].str.contains('esters')
+
+    #bitterness in description
+    df['bitterness'] = df['style'].str.contains('bitterness')
+
+    #Oak characteristics
+    df['oak'] = df['style'].str.contains('oak')
+
+
+
+
+    ## Will add these if I don't dropna on srm and ibu values
+    # #has energy added
+    # df['has_energy'] = df['description'].str.contains('energy')
+
+    # #has brett yeast
+    # df['has_brett'] = df['description'].str.contains('brett')
     
     
     
