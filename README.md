@@ -7,6 +7,8 @@
 
 The main question this classification project aimed to ask is: are beer styles actually representative of shared traits of a particular style or is it that style boundaries more or less arbitrary?  For example, is the style stout actually distinguishable from other beers or is it just a stout because the label says so?  Bringing domain knowledge of 10 years as a brewer I came in to this project with a deep resepct for styles and tradition but also knowing many breweries will call their beer what they like.  With knowledge applied, I put this dataset to the test to see if classification ML models can predict a beers style
 
+## Executive Summary 
+(to be completed)
 
 ## Project Goal:
 The goal of this project is to use machine learning classification models to test if they can accurately predict a beers style by specific attributes of the beer itself.  
@@ -26,82 +28,57 @@ Note, models were tested on the grouping of 25 style classifications as well as 
   - How does ABV define a style
   - How does IBU (bitterness) define a style
 
+## Project Planning
+(to be completed)
+
+## Steps to Reproduce 
+(to be completed)
+
 
 ## Data Dictionary
 
 # Data Dictionary
 | Feature                    | Datatype               | Description                                                           |
 |:---------------------------|:-----------------------|:----------------------------------------------------------------------|
-ID                           |          object  | Row name
-Name                         |          object        | beer name
-calculatedfinishedsquarefeet |          float64
-fips                         |          float64
-latitude                     |          float64
-longitude                    |          float64
-lotsizesquarefeet            |          float64
-regionidcity                 |          float64
-regionidcounty               |           float64
-regionidzip                  |           float64
-yearbuilt                    |           float64
-structuretaxvaluedollarcnt   |           float64
-taxvaluedollarcnt            |           float64
-landtaxvaluedollarcnt        |           float64
-taxamount                    |           float64
-county                       |            object
-age                          |           float64
-age_bin                      |           float64
-taxrate                      |           float64
-acres                        |           float64
-acres_bin                    |           float64
-sqft_bin                     |           float64
-structure_dollar_per_sqft    |           float64
-structure_dollar_sqft_bin    |           float64
-land_dollar_per_sqft         |           float64
-lot_dollar_sqft_bin          |           float64
-bath_bed_ratio               |           float64
-cola                         |             int64
-logerror_bins                |          category
-baseline                     |           float64
-scaled_latitude              |           float64
-scaled_longitude             |           float64
-scaled_bathroomcnt           |           float64
-scaled_taxrate               |           float64
-scaled_bedroomcnt            |           float64
-scaled_lotsizesquarefeet     |           float64
-scaled_age                   |           float64
-scaled_acres                 |           float64
-scaled_bath_bed_ratio        |           float64
-scaled_calculatedfinishedsquarefeet|     float64
-area_cluster                 |            object
-size_cluster                 |            object
-price_cluster                |            object
-tax_cluster                  |            object
-area_cluster_la_newer        |             uint8
-area_cluster_la_older        |             uint8
-area_cluster_northwest_costal|             uint8
-area_cluster_palmdale_landcaster |         uint8
-area_cluster_santa_clarita   |             uint8
-area_cluster_se_coast        |             uint8
-size_cluster_1250_to_1650    |             uint8
-size_cluster_1300_to_2000    |             uint8
-size_cluster_1500_to_1900    |             uint8
-size_cluster_1500_to_2800    |             uint8
-size_cluster_2300_to_4400    |             uint8
-size_cluster_2900_to_4000    |             uint8
-size_cluster_900_to_1200     |             uint8
-price_cluster_144000_to_355000|            uint8
-price_cluster_34000_to_110000 |            uint8
-price_cluster_420000_to_870000|            uint8
-price_cluster_45000_to_173000 |            uint8
-price_cluster_69000_to_210000 |            uint8
-tax_cluster_1000_to_3000      |            uint8
-tax_cluster_16000_to_22000    |            uint8
-tax_cluster_30000_to_40000    |            uint8
-tax_cluster_5000_to_6000      |            uint8
-tax_cluster_8500_to_12000     |            uint8
-logerror                      |          float64
+id                            | object        | identification #
+name                           | object       | name
+nameDisplay              |        object      | name-displa
+abv                         |    float64      | alcohol by volume
+styleId                     |      int64      | style ID
+statusDisplay                |    object      | verification for style ID
+style                         |   object      | description 'beer's label'
+description                  |    object      | 2ndary description (mostly Nan)
+ibu                        |     float64      | International Bitterness Units
+srm                       |      float64      | Beer's Color (0-40)
+ibu_min                  |       float64      | ibu min for beer
+ibu_max                  |       float64      | ibu max for beer
+abv_min                   |      float64      | abv min for beer
+abv_max                   |      float64      | abv max for beer
+srm_min                   |      float64      | srm min for beer
+srm_max                   |      float64      | srm max for beer
+og_min                    |      float64      | og min for beer (starting gravity)
+fg_min                   |       float64      | fg min for beer (finishing gravity)
+fg_max                    |      float64      | fg max for beer (finishing gravity)
+category_id                 |      int64      | category id
+short_name                   |    object      | beer identification name
+srm_avg                     |    float64      | srm average for beer
+ibu_avg                    |     float64      | ibu average for beer
+abv_avg                     |    float64      | abv average for beer
+sour                        |       bool      | sour characteristics 
+fruit_des                    |      bool      | fruit characteristics
+wheat_des                    |      bool      | wheat characteristics
+smoke_des                   |       bool      | smoke characteristics
+chili_des                       |   bool      | chili charcteristics
+mead_des                      |     bool      | mead characteristics
+lager_des                     |     bool      | lager yeast characteristics
+BBL                            |    bool      | barrel aged
+american_hop                 |      bool      | american hop characteristics
+piney_flavor                  |     bool      | piney flavor characteristics
+belgian                       |     bool      | Belgian characteristics
+imperial                     |      bool      | Imperial (higher abv)
+honey                        |      bool      | honey characteristics
+esters                      |       bool      | ester (yeasty) characteristics
+bitterness                   |      bool      | bitterness attribute (typically for higher ibu)
+oak                           |     bool      | oak characteristics
+style_collapsed                 | object      | Beer Style Condensed (Target Variable) 
 
-
-
-
-## Steps to Reproduce 
