@@ -1,5 +1,4 @@
-from cgi import test
-from wsgiref import validate
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -146,63 +145,63 @@ def prepare_beer(df):
     # 768 null values
     df = df[pd.notnull(df['ibu'])]
 
-    ###### Look to add wood, hoppy, (think of other keywords)
-
-
-
     # #### I would like to include the NaNs for ibu and srm but will look at it after the MVP
     # #new column
     df['style_collapsed'] = df['short_name']
     ### GROUPING SIMILAR STYLES INTO BROADER CATEGORIES
-    #IPA style collapsed
+    #IPA styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['American IPA','Juicy or Hazy IPA', 'Session IPA'], 'IPA')
+    #Imperial styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Juicy or Hazy Double IPA','Imperial IPA'], 'Imperial_IPA')
+    #Barley Wine styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['American Barleywine', 'British Barleywine'], 'Barleywine')
+    #Wheat styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Wheat Ale','Fruit Wheat Ale',  'Wheatwine',  'Hefeweizen', 'Dark Wheat Ale', 'Dunkelweizen','Kristallweizen', 'Weizenbock','Leichtesweizen', 'Bernsteinfarbenesweizen'], 'Wheat_Beers')
+    #Lager styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['American Lager', 'American Premium Lager', 'American Light Lager','Vienna Lager','American Low-Carb Lager', 'Tropical Light Lager','American Ice Lager','Dry Lager','Kellerbier'], 'Lager')
+    #Blonde Ales styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Blonde','Belgian Blonde'], 'Blonde')
-
+    #Stouts styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['American Imperial Stout', 'American Stout', 'Sweet Stout', 'Oatmeal Stout', 'Stout','Dry Irish Stout', 'British Imperial Stout', 'Export Stout'], 'Stout')
-
-
+    #Porters styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Brown Porter', 'Robust Porter','American Imperial Porter', 'Baltic Porter', 'Smoke Porter'], 'Porter')
-
-
+    #Pale ale styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['American Pale', 'English Pale', 'English Pale Mild', 'American Strong Pale', 'International Pale', 'Austrailian Pale', 'Juicy or Hazy Pale Ale', 'Wet Hop Ale','American/Belgian Pale', 'Classic Australian Pale'], 'Paleale')
-
-
+    #Amber styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Amber','American Amber Lager', 'Leichtbier'], 'Amber')
-
+    #Belgian Ales styles collapsed (very generic)
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Belgian Pale', 'Belgian Pale Strong', 'Belgian Ale', 'Bière de Garde',  'Belgian Dubbel', 'Belgian Dark Strong', 'Belgian Tripel', 'Belgian Fruit' ,'Belgian Quad', 'Belgian Table Beer'], 'Belgian_Variety')
-
-
+    # Pils styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['International Pilsener','Bohemian Pilsener','Contemporary American Pilsener', 'German Pilsener','American Pilsener', 'Helles', 'Dortmunder']
     , 'Pilsner')
-
+    #Sour, Lambics, Gose styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Sour', 'Lambic', 'Gueuze','Leipzig Gose', 'Fruit Lambic', 'Berlinerweisse','Contemporary Gose']
     , 'Sour_Gose')
-
+    # Reds styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Double Red', 'Imperial Red','Irish Red','Flanders Red']
     , 'Redale')
-
+    # BBL styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['BBL Aged Dark', 'BBL Aged Pale', 'BBL Aged Sour', 'BBL Aged','BBL Aged Strong']
     , 'BBL_aged')
-
+    # Browns styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace([ 'English Brown', 'American Brown'], 'Brown')
-
+    # Smoked ales styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Rauchbier','Märzen Rauchbier', 'Helles Rauchbier','Bock Rauchbier', 'Smoke Beer'], 'Smoke')
-
+    # Dark beers styles collapsed (both ales and lagers)
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Schwarzbier', 'American Dark Lager','Euro Dark','English Dark Mild','American/Belgian Dark', 'Black Ale'], 'Darkale')
-
-
+    # Flavor beers (spice, coffee) styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Chili Beer','Coffee Beer','Spice Beer', 'Chocolate Beer', 'Pumpkin Beer','Honey Beer'], 'Spice_Flavor_Ales')
-
-
+    # Strong Ales (English) styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Scottish Export','Scottish Heavy','Old Ale', 'Scotch Ale','Strong Ale'], 'Strong_ales')
+    # Mild ales styles collapsed (generalized)
     df['style_collapsed'] = df['style_collapsed'].replace([ 'Grodziskie', 'Session'], 'Mild_ales')
+    # English bitters styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['ESB', 'Special Bitter','Bitter'], 'English_Bitter')
+    # Oktoberfest styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace([ 'American Oktoberfest','Oktoberfest'], 'Oktoberfest')
+    # Rye variety styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Rye Ale','German Rye'], 'Rye_Ales')
+    # English light body styles collapsed
     df['style_collapsed'] = df['style_collapsed'].replace(['Scottish Light', 'English Summer Ale'], 'English_Mild')
     
     # Remove any values under 20 as it will be to difficult to classify
