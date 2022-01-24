@@ -21,9 +21,9 @@ import scipy.stats as stats
 #creating an empty dataframe, looping through files, appending to dataframe - all jsons pulled into one
 def acquire_beer_classification():
     df1 = pd.DataFrame()
-    for file in os.listdir("/Users/daniels/codeup-data-science/beer_classification/beer-database"):
+    for file in os.listdir("./beer-database/"):
         if file.endswith(".json"):
-            with open ("/Users/daniels/codeup-data-science/beer_classification/beer-database/" + str(file)) as f:            
+            with open ("./beer-database/" + str(file)) as f:            
                 data = json.load(f)
                 df = pd.DataFrame(data['data'])
                 df1 = df.append(df1)
